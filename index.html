@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Encrypter</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="wrapper">
+                <div class="mainTitle">$</div>
+                <ul class="dinamycTitle">
+                    <li><span>this is a</span></li>
+                    <li><span>encrypter</span></li>
+                    <li><span>and</span></li>
+                    <li><span>decrypter</span></li>
+                </ul>
+            </div>
+        </header>
+        <main>
+            <div class="console">
+                <section class="input">
+                    <div class="top">
+                        <h1>console_</h1>
+                        <nav>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <form action="">
+                        <textarea name="" id="input" rows="10" placeholder="Ingrese el texto aquí... " autofocus></textarea>
+                    </form>
+                </section>
+                <div class="buttons">
+                    <button onclick="toEncrypt()">$ encrypt</button>
+                    <button onclick="toDecrypt()">$ decrypt</button>
+                    <button onclick="toCopy()">$ copy</button>
+                </div>
+                <section class="encrypt">
+                    <div class="end">
+                        <h1>terminal_</h1>
+                        <nav>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="textOutput">
+                        <p class="encrypts">
+                            <span>|</span>
+                        </p>
+                    </div>        
+                </section>
+            </div>
+        </main>
+        <footer>
+            <p class="derechos">Desarrolado por Zeckre</p>
+            <a href="https://github.com/Zeckre" class="fa fa-github"></a>
+        </footer>
+    </body>
