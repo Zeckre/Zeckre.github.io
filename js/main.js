@@ -1,13 +1,25 @@
 /**
  * CodeNexo - Main JavaScript
- * Handles: mobile menu toggle, form submission, smooth scroll
+ * Handles: mobile menu toggle, form submission with EmailJS, smooth scroll
  */
+
+// ==========================================================================
+// EmailJS Configuration
+// ==========================================================================
+
+const EMAILJS_PUBLIC_KEY = 'LZNwN5BR1LuxyxsWF';
+const EMAILJS_SERVICE_ID = 'service_cqcoh5o';
+const EMAILJS_TEMPLATE_ENTERPRISE = 'template_3fl9vkl'; // Correo a tu empresa
+const EMAILJS_TEMPLATE_CLIENT = 'template_cet73uq';     // Confirmación al cliente
 
 // ==========================================================================
 // DOM Ready
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize EmailJS with public key
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+
   initMobileMenu();
   initContactForm();
   initSmoothScrollLinks();
@@ -50,22 +62,23 @@ function initMobileMenu() {
 }
 
 // ==========================================================================
-// Contact Form Handler
+// Contact Form Handler (EmailJS)
 // ==========================================================================
 
 /**
- * Handles the CTA form submission
- * Validates email and shows confirmation
+ * Handles the CTA form submission using EmailJS
+ * Sends two emails: one to enterprise, one confirmation to client
  */
 function initContactForm() {
   const form = document.querySelector('.cta-form');
 
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const emailInput = form.querySelector('input[type="email"]');
+    const btn = form.querySelector('button');
     const email = emailInput?.value.trim();
 
     // Basic email validation
@@ -74,17 +87,43 @@ function initContactForm() {
       return;
     }
 
-    // Show success feedback
-    const btn = form.querySelector('button');
+    // Disable button and show loading state
     const originalText = btn.textContent;
-    btn.textContent = '¡Enviado!';
+    btn.textContent = 'Enviando...';
     btn.disabled = true;
 
-    setTimeout(() => {
-      btn.textContent = originalText;
-      btn.disabled = false;
+    try {
+      // Send email to enterprise (they receive the client's email)
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ENTERPRISE, {
+        from_email: email,
+      });
+
+      // Send confirmation email to client
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CLIENT, {
+        to_email: email,
+        message: 'Hemos recibido tu mensaje. Nos pondremos en contacto contigo pronto.',
+      });
+
+      // Success feedback
+      btn.textContent = '¡Enviado!';
       emailInput.value = '';
-    }, 2000);
+
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }, 3000);
+
+    } catch (error) {
+      console.error('EmailJS error:', error);
+
+      // Error feedback
+      btn.textContent = 'Error. Intenta de nuevo';
+
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }, 3000);
+    }
   });
 }
 
