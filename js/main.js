@@ -94,15 +94,30 @@ function initContactForm() {
 
     try {
       // Send email to enterprise (they receive the client's email)
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ENTERPRISE, {
-        from_email: email,
-      });
+      const enterpriseResult = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ENTERPRISE,
+        {
+          from_email: email,
+          to_email: email,
+          email: email,
+          message: 'Nuevo contacto desde la web: ' + email,
+        }
+      );
+      console.log('Enterprise email sent:', enterpriseResult);
 
       // Send confirmation email to client
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CLIENT, {
-        to_email: email,
-        message: 'Hemos recibido tu mensaje. Nos pondremos en contacto contigo pronto.',
-      });
+      const clientResult = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_CLIENT,
+        {
+          to_email: email,
+          from_email: email,
+          email: email,
+          message: 'Hemos recibido tu mensaje. Nos pondremos en contacto contigo pronto.',
+        }
+      );
+      console.log('Client email sent:', clientResult);
 
       // Success feedback
       btn.textContent = '¡Enviado!';
@@ -115,6 +130,8 @@ function initContactForm() {
 
     } catch (error) {
       console.error('EmailJS error:', error);
+      console.error('Error status:', error.status);
+      console.error('Error text:', error.text);
 
       // Error feedback
       btn.textContent = 'Error. Intenta de nuevo';
