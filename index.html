@@ -10,6 +10,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -235,23 +236,28 @@
     <!-- ===================================================================
          TRUST BAR - Stats
          =================================================================== -->
+   <!-- ===================================================================
+         TRUST BAR - Stats
+         =================================================================== -->
     <section class="border-y border-outline-variant/10 bg-surface-container-low py-12 px-margin-mobile md:px-margin-desktop">
       <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-outline-variant/20">
         <div class="flex flex-col gap-2 py-4 md:py-0">
-          <span class="font-display-lg-mobile text-display-lg-mobile text-primary font-bold">+50</span>
+
+          <span class="counter font-display-lg-mobile text-display-lg-mobile text-primary font-bold transition-transform duration-200" data-target="50">+0</span>
           <span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Proyectos Entregados</span>
         </div>
         <div class="flex flex-col gap-2 py-4 md:py-0">
-          <span class="font-display-lg-mobile text-display-lg-mobile text-primary font-bold">98%</span>
+      
+          <span class="counter font-display-lg-mobile text-display-lg-mobile text-primary font-bold transition-transform duration-200" data-target="98">0%</span>
           <span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Clientes Satisfechos</span>
         </div>
         <div class="flex flex-col gap-2 py-4 md:py-0">
-          <span class="font-display-lg-mobile text-display-lg-mobile text-primary font-bold">5+</span>
+
+          <span class="counter font-display-lg-mobile text-display-lg-mobile text-primary font-bold transition-transform duration-200" data-target="5">0+</span>
           <span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Años de Experiencia</span>
         </div>
       </div>
     </section>
-
     <!-- ===================================================================
          SERVICES
          =================================================================== -->
@@ -441,7 +447,76 @@
   <!-- ===================================================================
        FOOTER
        =================================================================== -->
-  <footer class="bg-surface-container-lowest border-t border-outline-variant/10 w-full">
+  
+      <section class="py-10 bg-background border-y border-outline-variant/10 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-margin mb-6 text-center">
+    <p class="text-xs font-semibold tracking-wider text-[#b7c4ff] uppercase">Empresas que confían en CodeNexo</p>
+  </div>
+  
+ <div class="flex overflow-hidden logo-marquee-container">
+    
+    <div class="flex justify-around items-center gap-16 min-w-full logo-track">
+      <img class="h-24 opacity-50 hover:opacity-100 transition-opacity duration-300 filter grayscale invert" src="assets/images/codenexo.png" alt="CodeNexo" />
+    </div>
+    
+    <div class="flex justify-around items-center gap-16 min-w-full logo-track" aria-hidden="true">
+      <img class="h-24 opacity-50 hover:opacity-100 transition-opacity duration-300 filter grayscale invert" src="assets/images/codenexo.png" alt="CodeNexo" />
+    </div>
+
+  </div>
+</section>
+       <section class="py-20 px-margin bg-background">
+  <div class="max-w-6xl mx-auto">
+    
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gradient mb-4">Nuestros Proyectos Destacados</h2>
+      <p class="text-on-surface-variant max-w-2xl mx-auto">Explora algunos de los desarrollos más recientes e innovadores que hemos creado en CodeNexo.</p>
+    </div>
+
+    <div class="swiper mySwiper pb-12">
+      <div class="swiper-wrapper">
+        
+        <div class="swiper-slide p-4">
+          <div class="glass-panel rounded-2xl overflow-hidden p-6 h-full flex flex-col justify-between">
+            <div>
+              <div class="h-48 rounded-xl bg-cover bg-center mb-6" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500');"></div>
+              <h3 class="text-xl font-bold text-white mb-2">E-Commerce Premium</h3>
+              <p class="text-sm text-on-surface-variant mb-4">Plataforma de ventas optimizada de alto rendimiento y pagos seguros.</p>
+            </div>
+            <a href="#" class="text-sm font-bold text-[#b7c4ff] hover:underline flex items-center gap-1">Ver proyecto →</a>
+          </div>
+        </div>
+
+        <div class="swiper-slide p-4">
+          <div class="glass-panel rounded-2xl overflow-hidden p-6 h-full flex flex-col justify-between">
+            <div>
+              <div class="h-48 rounded-xl bg-cover bg-center mb-6" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500');"></div>
+              <h3 class="text-xl font-bold text-white mb-2">Dashboard de Analíticas</h3>
+              <p class="text-sm text-on-surface-variant mb-4">Panel administrativo en tiempo real con gráficos interactivos avanzados.</p>
+            </div>
+            <a href="#" class="text-sm font-bold text-[#b7c4ff] hover:underline flex items-center gap-1">Ver proyecto →</a>
+          </div>
+        </div>
+
+        <div class="swiper-slide p-4">
+          <div class="glass-panel rounded-2xl overflow-hidden p-6 h-full flex flex-col justify-between">
+            <div>
+              <div class="h-48 rounded-xl bg-cover bg-center mb-6" style="background-image: url('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=500');"></div>
+              <h3 class="text-xl font-bold text-white mb-2">Sitio Web Corporativo</h3>
+              <p class="text-sm text-on-surface-variant mb-4">Diseño moderno, rápido y totalmente optimizado para posicionamiento SEO.</p>
+            </div>
+            <a href="#" class="text-sm font-bold text-[#b7c4ff] hover:underline flex items-center gap-1">Ver proyecto →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </div>
+</section>
+       <footer class="bg-surface-container-lowest border-t border-outline-variant/10 w-full">
     <div class="flex flex-col md:flex-row justify-between items-center py-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto gap-gutter">
 
       <!-- Footer Logo -->
@@ -464,8 +539,92 @@
     </div>
   </footer>
 
-  <!-- JavaScript -->
-  <script src="js/main.js"></script>
+ <script src="js/main.js"></script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll('.counter');
+    const speed = 80;
+
+    const startCounting = (counter) => {
+      const target = +counter.getAttribute('data-target');
+      
+      const updateCount = () => {
+        const currentText = counter.innerText.replace(/[^0-9]/g, '');
+        const count = +currentText;
+        const increment = Math.ceil(target / speed);
+
+        if (count < target) {
+          const nextValue = count + increment;
+          const finalValue = nextValue > target ? target : nextValue;
+
+          if (target === 50) {
+            counter.innerText = `+${finalValue}`;
+          } else if (target === 98) {
+            counter.innerText = `${finalValue}%`;
+          } else if (target === 5) {
+            counter.innerText = `${finalValue}+`;
+          }
+
+          setTimeout(updateCount, 25);
+        } else {
+          if (target === 50) counter.innerText = `+${target}`;
+          if (target === 98) counter.innerText = `${target}%`;
+          if (target === 5) counter.innerText = `${target}+`;
+
+          // Aplica el salto (bounce) y el destello de brillo (flash)
+          counter.classList.add('bounce-effect', 'flash-effect');
+        }
+      };
+
+      updateCount();
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startCounting(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    counters.forEach(counter => observer.observe(counter));
+
+    // ==========================================
+    // ¡AQUÍ ENCIENDE EL SLIDER! (Configuración)
+    // ==========================================
+    const swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,      // 1 tarjeta en móvil
+      spaceBetween: 20,      // Espacio entre ellas
+      loop: true,            // Desplazamiento infinito
+      autoplay: {
+        delay: 3000,         // Se mueve automáticamente cada 3 segundos
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,     // Deja hacer clic en los puntitos de abajo
+      },
+      breakpoints: {
+        // En tablets muestra 2 tarjetas
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 30,
+        },
+        // En computadoras muestra 3 tarjetas
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+      },
+    });
+
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script src="//code.tidio.co/ezvazqxibch8upovna3mmys9yjgfjthq.js" async></script>
 </body>
 </html>
