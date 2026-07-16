@@ -92,55 +92,45 @@ function initContactForm() {
     btn.textContent = 'Enviando...';
     btn.disabled = true;
 
+    let enterpriseOk = false;
+
+    // Send email to enterprise
     try {
-      // Send email to enterprise (they receive the client's email)
       const enterpriseResult = await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ENTERPRISE,
-        {
-          from_email: email,
-          to_email: email,
-          email: email,
-          message: 'Nuevo contacto desde la web: ' + email,
-        }
+        { email: email, reply_to: email }
       );
       console.log('Enterprise email sent:', enterpriseResult);
+      enterpriseOk = true;
+    } catch (err) {
+      console.error('Enterprise email FAILED:', err.status, err.text);
+    }
 
-      // Send confirmation email to client
+    // Send confirmation email to client
+    try {
       const clientResult = await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_CLIENT,
-        {
-          to_email: email,
-          from_email: email,
-          email: email,
-          message: 'Hemos recibido tu mensaje. Nos pondremos en contacto contigo pronto.',
-        }
+        { email: email, reply_to: email }
       );
       console.log('Client email sent:', clientResult);
+    } catch (err) {
+      console.error('Client email FAILED:', err.status, err.text);
+    }
 
-      // Success feedback
+    // Feedback
+    if (enterpriseOk) {
       btn.textContent = '¡Enviado!';
       emailInput.value = '';
-
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.disabled = false;
-      }, 3000);
-
-    } catch (error) {
-      console.error('EmailJS error:', error);
-      console.error('Error status:', error.status);
-      console.error('Error text:', error.text);
-
-      // Error feedback
-      btn.textContent = 'Error. Intenta de nuevo';
-
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.disabled = false;
-      }, 3000);
+    } else {
+      btn.textContent = 'Error. Revisa la consola (F12)';
     }
+
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }, 3000);
   });
 }
 
