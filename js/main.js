@@ -7,16 +7,16 @@
 // EmailJS Configuration
 // ==========================================================================
 
-const EMAILJS_PUBLIC_KEY = 'LZNwN5BR1LuxyxsWF';
-const EMAILJS_SERVICE_ID = 'service_cqcoh5o';
-const EMAILJS_TEMPLATE_ENTERPRISE = 'template_3fl9vkl'; // Correo a tu empresa
-const EMAILJS_TEMPLATE_CLIENT = 'template_cet73uq';     // Confirmación al cliente
+const EMAILJS_PUBLIC_KEY = "LZNwN5BR1LuxyxsWF";
+const EMAILJS_SERVICE_ID = "service_cqcoh5o";
+const EMAILJS_TEMPLATE_ENTERPRISE = "template_3fl9vkl"; // Correo a tu empresa
+const EMAILJS_TEMPLATE_CLIENT = "template_cet73uq"; // Confirmación al cliente
 
 // ==========================================================================
 // DOM Ready
 // ==========================================================================
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Initialize EmailJS with public key
   emailjs.init(EMAILJS_PUBLIC_KEY);
 
@@ -34,29 +34,29 @@ document.addEventListener('DOMContentLoaded', () => {
  * Uses the hamburger button in the header
  */
 function initMobileMenu() {
-  const menuBtn = document.querySelector('.mobile-menu-btn');
-  const mobileNav = document.querySelector('.mobile-nav');
+  const menuBtn = document.querySelector(".mobile-menu-btn");
+  const mobileNav = document.querySelector(".mobile-nav");
 
   if (!menuBtn || !mobileNav) return;
 
-  menuBtn.addEventListener('click', () => {
-    const isOpen = mobileNav.classList.toggle('open');
-    menuBtn.classList.toggle('active', isOpen);
+  menuBtn.addEventListener("click", () => {
+    const isOpen = mobileNav.classList.toggle("open");
+    menuBtn.classList.toggle("active", isOpen);
 
     // Update aria-expanded for accessibility
-    menuBtn.setAttribute('aria-expanded', isOpen);
+    menuBtn.setAttribute("aria-expanded", isOpen);
 
     // Toggle body scroll when menu is open
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.body.style.overflow = isOpen ? "hidden" : "";
   });
 
   // Close menu when clicking a nav link
-  mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileNav.classList.remove('open');
-      menuBtn.classList.remove('active');
-      menuBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+  mobileNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileNav.classList.remove("open");
+      menuBtn.classList.remove("active");
+      menuBtn.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
     });
   });
 }
@@ -70,15 +70,15 @@ function initMobileMenu() {
  * Sends two emails: one to enterprise, one confirmation to client
  */
 function initContactForm() {
-  const form = document.querySelector('.cta-form');
+  const form = document.querySelector(".cta-form");
 
   if (!form) return;
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const emailInput = form.querySelector('input[type="email"]');
-    const btn = form.querySelector('button');
+    const btn = form.querySelector("button");
     const email = emailInput?.value.trim();
 
     // Basic email validation
@@ -89,7 +89,7 @@ function initContactForm() {
 
     // Disable button and show loading state
     const originalText = btn.textContent;
-    btn.textContent = 'Enviando...';
+    btn.textContent = "Enviando...";
     btn.disabled = true;
 
     let enterpriseOk = false;
@@ -99,12 +99,12 @@ function initContactForm() {
       const enterpriseResult = await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ENTERPRISE,
-        { email: email, reply_to: email }
+        { email: email, reply_to: email },
       );
-      console.log('Enterprise email sent:', enterpriseResult);
+      console.log("Enterprise email sent:", enterpriseResult);
       enterpriseOk = true;
     } catch (err) {
-      console.error('Enterprise email FAILED:', err.status, err.text);
+      console.error("Enterprise email FAILED:", err.status, err.text);
     }
 
     // Send confirmation email to client
@@ -112,19 +112,19 @@ function initContactForm() {
       const clientResult = await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_CLIENT,
-        { email: email, reply_to: email }
+        { email: email, reply_to: email },
       );
-      console.log('Client email sent:', clientResult);
+      console.log("Client email sent:", clientResult);
     } catch (err) {
-      console.error('Client email FAILED:', err.status, err.text);
+      console.error("Client email FAILED:", err.status, err.text);
     }
 
     // Feedback
     if (enterpriseOk) {
-      btn.textContent = '¡Enviado!';
-      emailInput.value = '';
+      btn.textContent = "¡Enviado!";
+      emailInput.value = "";
     } else {
-      btn.textContent = 'Error. Revisa la consola (F12)';
+      btn.textContent = "Error. Revisa la consola (F12)";
     }
 
     setTimeout(() => {
@@ -149,10 +149,14 @@ function isValidEmail(email) {
  */
 function shakeElement(element) {
   if (!element) return;
-  element.style.animation = 'shake 0.5s ease';
-  element.addEventListener('animationend', () => {
-    element.style.animation = '';
-  }, { once: true });
+  element.style.animation = "shake 0.5s ease";
+  element.addEventListener(
+    "animationend",
+    () => {
+      element.style.animation = "";
+    },
+    { once: true },
+  );
 }
 
 // ==========================================================================
@@ -164,22 +168,23 @@ function shakeElement(element) {
  * Handles offset for the fixed header
  */
 function initSmoothScrollLinks() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      const targetId = anchor.getAttribute('href');
-      if (targetId === '#') return;
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const targetId = anchor.getAttribute("href");
+      if (targetId === "#") return;
 
       const target = document.querySelector(targetId);
       if (!target) return;
 
       e.preventDefault();
 
-      const headerHeight = document.querySelector('header')?.offsetHeight || 80;
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      const headerHeight = document.querySelector("header")?.offsetHeight || 80;
+      const targetPosition =
+        target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
 
       window.scrollTo({
         top: targetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     });
   });
