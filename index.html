@@ -383,7 +383,7 @@
           <div class="flex flex-col gap-2 py-4 md:py-0">
             <span
               class="counter font-display-lg-mobile text-display-lg-mobile text-primary font-bold transition-transform duration-200"
-              data-target="50"
+              data-target="3"
               >+0</span
             >
             <span
@@ -394,7 +394,7 @@
           <div class="flex flex-col gap-2 py-4 md:py-0">
             <span
               class="counter font-display-lg-mobile text-display-lg-mobile text-primary font-bold transition-transform duration-200"
-              data-target="98"
+              data-target="100"
               >0%</span
             >
             <span
@@ -405,7 +405,7 @@
           <div class="flex flex-col gap-2 py-4 md:py-0">
             <span
               class="counter font-display-lg-mobile text-display-lg-mobile text-primary font-bold transition-transform duration-200"
-              data-target="5"
+              data-target="1"
               >0+</span
             >
             <span
@@ -782,10 +782,9 @@
                 <div
                   class="text-on-surface-variant text-body-md px-6 pb-6 pt-0"
                 >
-                  git cheat sheet Sí, todos nuestros planes incluyen un periodo
-                  de garantía técnica, y ofrecemos paquetes de SLA (Service
-                  Level Agreement) para soporte continuo y nuevas
-                  funcionalidades.
+                  Sí, todos nuestros planes incluyen un periodo de garantía
+                  técnica, y ofrecemos paquetes de SLA (Service Level Agreement)
+                  para soporte continuo y nuevas funcionalidades.
                 </div>
               </details>
             </div>
@@ -902,19 +901,19 @@
               const nextValue = count + increment;
               const finalValue = nextValue > target ? target : nextValue;
 
-              if (target === 50) {
+              if (target === 3) {
                 counter.innerText = `+${finalValue}`;
-              } else if (target === 98) {
+              } else if (target === 100) {
                 counter.innerText = `${finalValue}%`;
-              } else if (target === 5) {
+              } else if (target === 1) {
                 counter.innerText = `${finalValue}+`;
               }
 
               setTimeout(updateCount, 25);
             } else {
-              if (target === 50) counter.innerText = `+${target}`;
-              if (target === 98) counter.innerText = `${target}%`;
-              if (target === 5) counter.innerText = `${target}+`;
+              if (target === 3) counter.innerText = `+${target}`;
+              if (target === 100) counter.innerText = `${target}%`;
+              if (target === 1) counter.innerText = `${target}+`;
 
               // Aplica el salto (bounce) y el destello de brillo (flash)
               counter.classList.add("bounce-effect", "flash-effect");
