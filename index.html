@@ -349,7 +349,7 @@
             <img
               alt="Mockup de apps móviles y ecommerce de alto rendimiento"
               class="object-cover w-full h-full"
-              src="assets/images/hero-mockup.png"
+              src="assets/images/imgimg.avif"
             />
 
             <!-- Floating Elements -->
@@ -453,11 +453,10 @@
               <h3
                 class="font-headline-md-mobile text-headline-md-mobile text-on-surface mb-3"
               >
-                Desarrollo de apps móviles
+                Desarrollo web
               </h3>
               <p class="font-body-md text-body-md text-on-surface-variant">
-                Aplicaciones nativas y multiplataforma robustas (iOS &amp;
-                Android) diseñadas para una retención óptima de usuarios.
+                Experiencias digitales rápidas, escalables y agradables.
               </p>
             </div>
 
@@ -481,8 +480,8 @@
                 Desarrollo de tiendas ecommerce
               </h3>
               <p class="font-body-md text-body-md text-on-surface-variant">
-                Plataformas de venta online de alta conversión, integradas con
-                pasarelas de pago seguras y gestión de inventario avanzada.
+                Plataformas de venta online, creamos tu tienda online lista para
+                facturar.
               </p>
             </div>
 
@@ -506,8 +505,8 @@
                 Diseño UX/UI
               </h3>
               <p class="font-body-md text-body-md text-on-surface-variant">
-                Interfaces intuitivas y centradas en el usuario que maximizan el
-                compromiso y reducen la fricción en el embudo de conversión.
+                Interfaces intuitivas y centradas en el usuario, páginas web tan
+                fáciles y visuales que tus clientes amarán usarlas.
               </p>
             </div>
 
@@ -687,22 +686,36 @@
             <div
               class="flex justify-around items-center gap-16 min-w-full logo-track"
             >
-              <img
-                class="h-24 opacity-50 hover:opacity- transition-opacity duration-300 filter grayscale invert"
-                src="assets/images/VlinCode_logo.png"
-                alt="VlinCode"
-              />
+              <a
+                href="https://ejemplo.com/cliente1"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block shrink-0"
+              >
+                <img
+                  class="h-24 opacity-50 hover:opacity-100 transition-opacity duration-100 filter grayscale hover:grayscale-0 invert"
+                  src="assets/images/VlinCode_logo.png"
+                  alt="Cliente 1"
+                />
+              </a>
             </div>
 
             <div
               class="flex justify-around items-center gap-16 min-w-full logo-track"
               aria-hidden="true"
             >
-              <img
-                class="h-24 opacity-50 hover:opacity-100 transition-opacity duration-300 filter grayscale invert"
-                src="assets/images/VlinCode_logo.png"
-                alt="VlinCode"
-              />
+              <a
+                href="https://ejemplo.com/cliente1"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block shrink-0"
+              >
+                <img
+                  class="h-24 opacity-50 hover:opacity-100 transition-opacity duration-100 filter grayscale hover:grayscale-0 invert"
+                  src="assets/images/VlinCode_logo.png"
+                  alt="Cliente 1"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -882,93 +895,11 @@
       </div>
     </footer>
 
-    <script src="js/main.js"></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const counters = document.querySelectorAll(".counter");
-        const speed = 80;
-
-        const startCounting = (counter) => {
-          const target = +counter.getAttribute("data-target");
-
-          const updateCount = () => {
-            const currentText = counter.innerText.replace(/[^0-9]/g, "");
-            const count = +currentText;
-            const increment = Math.ceil(target / speed);
-
-            if (count < target) {
-              const nextValue = count + increment;
-              const finalValue = nextValue > target ? target : nextValue;
-
-              if (target === 3) {
-                counter.innerText = `+${finalValue}`;
-              } else if (target === 100) {
-                counter.innerText = `${finalValue}%`;
-              } else if (target === 1) {
-                counter.innerText = `${finalValue}+`;
-              }
-
-              setTimeout(updateCount, 25);
-            } else {
-              if (target === 3) counter.innerText = `+${target}`;
-              if (target === 100) counter.innerText = `${target}%`;
-              if (target === 1) counter.innerText = `${target}+`;
-
-              // Aplica el salto (bounce) y el destello de brillo (flash)
-              counter.classList.add("bounce-effect", "flash-effect");
-            }
-          };
-
-          updateCount();
-        };
-
-        const observer = new IntersectionObserver(
-          (entries, observer) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                startCounting(entry.target);
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.3 },
-        );
-
-        counters.forEach((counter) => observer.observe(counter));
-
-        // ==========================================
-        // ¡AQUÍ ENCIENDE EL SLIDER! (Configuración)
-        // ==========================================
-        const swiper = new Swiper(".mySwiper", {
-          slidesPerView: 1, // 1 tarjeta en móvil
-          spaceBetween: 20, // Espacio entre ellas
-          loop: true, // Desplazamiento infinito
-          autoplay: {
-            delay: 1000, // Se mueve automáticamente cada 3 segundos
-            disableOnInteraction: false,
-          },
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true, // Deja hacer clic en los puntitos de abajo
-          },
-          breakpoints: {
-            // En tablets muestra 2 tarjetas
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 30,
-            },
-            // En computadoras muestra 3 tarjetas
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-          },
-        });
-      });
-    </script>
-
+    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
 
     <script
       src="//code.tidio.co/ezvazqxibch8upovna3mmys9yjgfjthq.js"
