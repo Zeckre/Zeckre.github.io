@@ -24,7 +24,11 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to right, #b7c4ff, #0052ff); /* primary to primary-container */
+  background-image: linear-gradient(
+    to right,
+    #b7c4ff,
+    #0052ff
+  ); /* primary to primary-container */
 }
 
 /* Smooth Scroll - Smooth anchor navigation */
@@ -67,24 +71,34 @@
 }
 /* Animación del salto */
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); } /* Saltito un poquito más alto */
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  } /* Saltito un poquito más alto */
 }
 
 /* Animación del destello brillante (recorrido del reflejo) */
 @keyframes flash {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 /* NUEVA animación para hacer que todo el número resplandezca/brille hacia afuera */
 @keyframes glow-pulse {
-  0%, 100% { 
-    filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0)); 
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0));
   }
-  50% { 
-    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9)) 
-            drop-shadow(0 0 5px rgba(183, 196, 255, 0.8)); 
+  50% {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9))
+      drop-shadow(0 0 5px rgba(183, 196, 255, 0.8));
   }
 }
 
@@ -96,20 +110,22 @@
 .flash-effect {
   /* Hacemos la franja blanca central del degradado mucho más ancha y brillante */
   background: linear-gradient(
-    90deg, 
-    #b7c4ff 0%, 
-    #b7c4ff 25%, 
-    #ffffff 50%, 
-    #b7c4ff 75%, 
+    90deg,
+    #b7c4ff 0%,
+    #b7c4ff 25%,
+    #ffffff 50%,
+    #b7c4ff 75%,
     #b7c4ff 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  
+
   /* Combinamos el destello interior con un resplandor exterior gigante */
-  animation: flash 0.7s ease-in-out, glow-pulse 0.7s ease-in-out;
+  animation:
+    flash 0.7s ease-in-out,
+    glow-pulse 0.7s ease-in-out;
 }
 /* ==========================================
    Efecto de Movimiento de Logos Infinito
@@ -133,18 +149,87 @@
 }
 
 .logo-marquee-container {
-  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
-  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 .swiper-slide img {
-    width: 200px;   
-    height: auto;   
-    display: block;
-    margin: 0 auto; 
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .swiper {
-    width: 100%;
-    max-width: 1200px; 
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* ==========================================
+   Review Card Carousel Styles
+   ========================================== */
+
+.reviewsSwiper {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 0 50px 0;
+}
+
+.reviewsSwiper .swiper-slide {
+  height: auto;
+}
+
+.review-card {
+  height: 260px;
+  overflow-y: auto;
+}
+
+.reviews-nav-prev,
+.reviews-nav-next {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.reviews-nav-prev::after,
+.reviews-nav-next::after {
+  font-size: 16px;
+}
+
+/* Line clamp utility for review text */
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Asegúrate de que el fondo de tu contenedor sea oscuro para que el blanco sea visible */
+#titulo-animado {
+  color: #ffffff;
+  font-size: 4rem; /* Ajusta el tamaño a tu diseño */
+  font-family: sans-serif;
+}
+
+/* Esta clase controla el degradado de la palabra "venden" */
+.texto-gradiente {
+  background-image: linear-gradient(to right, #ffffff, #0055ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block; /* Requerido para que el degradado se aplique correctamente */
 }
